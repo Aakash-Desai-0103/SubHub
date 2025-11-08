@@ -52,24 +52,38 @@ The platform automatically updates subscription statuses, calculates analytics, 
 ```
 
 SubHub/
-├── subhub-frontend/           # React frontend (Vite)
-│   ├── src/
-│   │   ├── components/        # Navbar, SubscriptionRow, Charts
-│   │   ├── pages/             # Dashboard, Analytics, Profile, etc.
-│   │   └── services/          # Axios API configuration
-│   └── package.json
+├── subhub-backend/ # Node.js + Express backend
+│ ├── controllers/ # Business logic (auth, subscriptions, analytics)
+│ ├── middleware/ # JWT authentication middleware
+│ ├── models/ # MongoDB schemas
+│ ├── node_modules/ # Backend dependencies
+│ ├── routes/ # API route definitions
+│ ├── scripts/ # Any helper or setup scripts
+│ ├── utils/ # Email service, cron jobs, helpers
+│ ├── .env # Environment variables (not pushed to GitHub)
+│ ├── package.json # Backend dependencies and scripts
+│ ├── package-lock.json # Dependency lock file
+│ └── server.js # Backend entry point
 │
-├── subhub-backend/            # Node.js + Express backend
-│   ├── controllers/           # Business logic (auth, subscriptions, analytics)
-│   ├── middleware/            # JWT auth middleware
-│   ├── models/                # MongoDB schemas
-│   ├── routes/                # API routes
-│   ├── utils/                 # Email + Cron jobs
-│   └── server.js              # App entry point
+├── subhub-frontend/ # React (Vite) frontend
+│ ├── node_modules/ # Frontend dependencies
+│ ├── public/ # Static assets
+│ ├── src/ # Source code
+│ │ ├── components/ # UI components (Navbar, SubscriptionRow, Charts)
+│ │ ├── pages/ # Dashboard, Analytics, Profile, etc.
+│ │ └── services/ # Axios setup and API configuration
+│ ├── .gitignore # Git ignore rules
+│ ├── eslint.config.js # ESLint configuration
+│ ├── index.html # Root HTML file
+│ ├── package.json # Frontend dependencies and scripts
+│ ├── package-lock.json # Dependency lock file
+│ ├── README.md # Frontend-specific readme (optional)
+│ └── vite.config.js # Vite configuration
 │
-├── LICENSE
-├── README.md
-└── .gitignore
+├── .gitattributes # Git configuration for line endings, etc.
+├── .gitignore # Global ignore rules
+├── LICENSE # Project license (MIT)
+└── README.md # Main project documentation
 
 ````
 
