@@ -1,0 +1,82 @@
+.sub-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.sub-item-info { flex-grow: 1; }
+.sub-item-info h3 { margin: 0 0 0.25rem 0; color: #333; }
+.sub-item-cost { font-size: 1.25rem; font-weight: 600; color: #007bff; margin: 0; }
+.sub-item-category { display: inline-block; background-color: #f0f0f0; color: #555; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; margin: 0.5rem 0; }
+.sub-item-due { margin: 0; color: #666; font-size: 0.9rem; }
+.sub-item-actions { display: flex; gap: 0.75rem; }
+.btn-action { padding: 0.6rem 1rem; text-decoration: none; border: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+.btn-pay { background-color: #28a745; color: white; }
+.btn-pay:hover { background-color: #218838; }
+.btn-manage { background-color: #ffc107; color: #333; }
+.btn-manage:hover { background-color: #e0a800; }
+.btn-edit { background-color: #f1f1f1; color: #333; }
+.btn-edit:hover { background-color: #e1e1e1; }
+.btn-delete { background-color: #dc3545; color: white; }
+.btn-delete:hover { background-color: #c82333; }
+.sub-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+/* 🔹 STATUS LABEL STYLING */
+.sub-item-status {
+  font-weight: 600;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* 🔹 Color themes for status */
+.status-active {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-inactive {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.status-cancelled {
+  background-color: #fff3cd;
+  color: #664d03;
+}
+
+/* 🔹 Disabled button for inactive subs */
+.btn-disabled {
+  opacity: 0.6;
+  background: #eaeaea;
+  color: #666;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+  border: none;
+  text-align: center;
+}
+
+/* Optional: subtle hover pop for active cards only */
+.sub-item:hover:not(.inactive-card) {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: visually tone down expired cards */
+.inactive-card {
+  opacity: 0.8;
+  filter: grayscale(0.1);
+}

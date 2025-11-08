@@ -1,0 +1,188 @@
+/* --- Main Page Container --- */
+.landing-page {
+  font-family: Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header (Logo & Buttons) --- */
+.landing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 5%;
+  background-color: #333;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.landing-logo-img {
+  height: 130px;
+  width: auto;
+  /* --- NEW STYLES --- */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.landing-logo-img:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 6px 10px rgba(0, 123, 255, 0.3)); /* Cool blue shadow on dark */
+}
+
+/* --- Main Content (Hero & Features) --- */
+.landing-main {
+  flex: 1;
+}
+
+/* --- Hero Section --- */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 4rem 5%;
+  background: #f9f9f9; /* Light gray background to show cards */
+  gap: 2rem;
+}
+
+/* --- Left Side Card --- */
+.hero-content {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+/* --- Left Side Hover Effect --- */
+.hero-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* --- Right Side Card --- */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+/* --- Right Side Hover Effect --- */
+.hero-image:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* --- Features Section --- */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 4rem 5%;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.feature {
+  max-width: 300px;
+  flex: 1;
+  padding: 2rem;
+  border-radius: 8px;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  color: #666;
+}
+
+.feature:hover {
+  background-color: #ffffff;
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Footer --- */
+.landing-footer {
+  text-align: center;
+  padding: 2rem 5%;
+  background: #333;
+  color: #ccc;
+}
+
+/* --- Button Styles (re-used) --- */
+.btn {
+  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
+.btn-secondary:hover {
+  background-color: #e1e1e1;
+}
+
+.btn-lg {
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+}
+
+/* --- Middle tagline style --- */
+.header-main-tagline {
+  color: #ffffff;
+  font-size: 1.6rem; 
+  font-weight: 600;  
+  text-align: center; 
+  flex-grow: 1;       
+  margin: 0 2rem;     
+}

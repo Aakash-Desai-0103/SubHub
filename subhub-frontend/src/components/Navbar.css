@@ -1,0 +1,168 @@
+/* Find the .navbar rule and REPLACE it with this */
+.navbar {
+  display: flex;
+  justify-content: flex-start; /* Aligns items to the left */
+  align-items: center;
+  padding: 1rem 2rem; 
+  gap: 3rem; /* Creates space between logo and links */
+}
+
+.navbar-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-logo-img {
+  height: 120px;
+  width: 100px;
+  vertical-align: middle;
+  /* --- NEW STYLES --- */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.navbar-logo-img:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+  background-color: #f1f1f1;
+}
+
+.navbar-links a.active {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #007bff;
+  border-bottom: none;
+}
+
+.navbar-user {
+  margin-left: auto; /* This pushes it to the far right */
+}
+
+/* --- NEW STYLES FOR DATE & TIME --- */
+.datetime-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+}
+
+.datetime-time {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.datetime-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+.navbar-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-logo-img {
+  height: 120px;
+  width: 100px;
+  vertical-align: middle;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+  background-color: #f1f1f1;
+}
+
+.navbar-links a.active {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #007bff;
+  border-bottom: none;
+}
+
+/* ADD THIS ENTIRE NEW RULE */
+.navbar-user {
+  margin-left: auto; /* This pushes the user icon to the far right */
+}
+
+.navbar-logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-logo-img {
+  height: 120px;
+  width: 100px;
+  vertical-align: middle;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem; /* <-- This creates the box */
+  border-radius: 6px; /* <-- This rounds the corners */
+  transition: color 0.2s, background-color 0.2s; /* <-- Updated transition */
+}
+
+.navbar-links a:hover {
+  color: #007bff;
+  background-color: #f1f1f1; /* <-- This is your "flexi box" */
+}
+/* Find the .navbar-links a.active rule and REPLACE it with this */
+.navbar-links a.active {
+  color: #ffffff; /* <-- White text */
+  font-weight: bold;
+  background-color: #007bff; /* <-- Solid blue box */
+  border-bottom: none; /* <-- Remove old underline */
+}

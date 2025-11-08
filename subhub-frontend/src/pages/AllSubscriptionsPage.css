@@ -1,0 +1,280 @@
+/* --- Main Container & Header --- */
+.all-subs-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.all-subs-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 2rem;
+}
+.all-subs-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.filter-bar select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn-clear-filters {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.btn-clear-filters:hover {
+  text-decoration: underline;
+}
+
+.filter-count {
+  font-size: 0.9rem;
+  color: #555;
+  margin-left: 1rem;
+}
+
+/* --- NEW BULK ACTION BUTTONS --- */
+.btn-bulk-action {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: white;
+  margin-left: 1rem; /* Space from the count */
+}
+
+.btn-bulk-cancel {
+  background-color: #dc3545; /* Red */
+}
+.btn-bulk-cancel:hover {
+  background-color: #c82333;
+}
+
+.btn-bulk-resume {
+  background-color: #28a745; /* Green */
+}
+.btn-bulk-resume:hover {
+  background-color: #218838;
+}
+
+.btn-bulk-resubscribe {
+  background-color: #007bff; /* Blue */
+}
+.btn-bulk-resubscribe:hover {
+  background-color: #0056b3;
+}
+
+
+.btn-add-new {
+  margin-left: auto; /* Pushes to the far right */
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+.btn-add-new:hover {
+  background-color: #0056b3;
+}
+
+/* --- Sort Bar --- */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sort-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-right: 0.5rem;
+}
+
+.btn-sort {
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-sort:hover {
+  background: #e1e1e1;
+}
+.btn-sort.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* --- Subscriptions Table --- */
+.subs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border-spacing: 0;
+}
+
+.subs-table th, 
+.subs-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.subs-table th {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #fcfcfc;
+}
+
+/* --- Table Row Hover Effect --- */
+.sub-table-row {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sub-table-row:last-child td {
+  border-bottom: none;
+}
+
+.sub-table-row:hover {
+  background-color: #fcfcfc;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+
+.sub-table-checkbox {
+  width: 40px;
+  text-align: center;
+}
+.sub-table-checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Table Cell Content --- */
+.service-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  margin-right: 1rem;
+  object-fit: contain;
+  border: 1px solid #eee;
+}
+
+.sub-table-service {
+  display: flex;
+  align-items: center;
+}
+
+.service-info {
+  display: flex;
+  flex-direction: column;
+}
+.service-name {
+  font-weight: 600;
+  color: #333;
+}
+.service-description {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.sub-table-cost {
+  font-weight: 700;
+  color: #333;
+}
+
+/* --- Status Pill --- */
+.status-pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-active {
+  color: #28a745;
+  background: #eaf7ed;
+}
+.status-cancelled {
+  color: #dc3545;
+  background: #fbeae9;
+}
+.status-inactive {
+  color: #666;
+  background: #f1f1ff;
+}
+
+/* --- Action Icons --- */
+.sub-table-actions {
+  text-align: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin: 0 0.25rem;
+  text-decoration: none;
+  color: #555;
+  transition: color 0.2s;
+}
+.action-btn:hover {
+  color: #007bff;
+}
+.action-btn:last-child:hover {
+  color: #dc3545;
+}
+
+/* --- No Subs Message --- */
+.no-subs-message {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 3rem;
+}

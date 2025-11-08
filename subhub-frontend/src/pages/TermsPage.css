@@ -1,0 +1,42 @@
+.terms-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terms-box {
+  max-width: 800px;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.terms-box h1 {
+  margin-top: 0;
+  color: #333;
+}
+
+.terms-box h2 {
+  color: #007bff;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.25rem;
+}
+
+.terms-box p,
+.terms-box li {
+  line-height: 1.6;
+  color: #555;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: #007bff;
+}
