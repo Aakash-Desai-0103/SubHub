@@ -52,39 +52,91 @@ The platform automatically updates subscription statuses, calculates analytics, 
 ```
 
 SubHub/
+│
 ├── subhub-backend/ # Node.js + Express backend
-│ ├── controllers/ # Business logic (auth, subscriptions, analytics)
-│ ├── middleware/ # JWT authentication middleware
-│ ├── models/ # MongoDB schemas
-│ ├── node_modules/ # Backend dependencies
-│ ├── routes/ # API route definitions
-│ ├── scripts/ # Any helper or setup scripts
-│ ├── utils/ # Email service, cron jobs, helpers
-│ ├── .env # Environment variables (not pushed to GitHub)
+│ ├── controllers/ # Handles all backend business logic
+│ │ ├── analyticsController.js # Generates and manages analytics data
+│ │ ├── authController.js # Handles user login and registration
+│ │ └── subscriptionController.js # Manages subscription CRUD operations
+│ │
+│ ├── middleware/ # Middleware for request handling
+│ │ └── authMiddleware.js # JWT authentication verification
+│ │
+│ ├── models/ # MongoDB Mongoose schemas
+│ │ ├── Subscription.js # Schema for subscription data
+│ │ └── User.js # Schema for user accounts
+│ │
+│ ├── routes/ # Express API route definitions
+│ │ ├── analyticsRoutes.js # Routes for analytics
+│ │ ├── authRoutes.js # Routes for authentication
+│ │ └── subscriptionRoutes.js # Routes for subscription operations
+│ │
+│ ├── scripts/ # Helper scripts
+│ │ ├── generateToken.js # Generates JWT tokens for testing
+│ │ └── seed.js # Seeds the database with dummy data
+│ │
+│ ├── utils/ # Utility and background services
+│ │ ├── reminderJob.js # Scheduled task for sending reminders
+│ │ └── sendEmail.js # Handles Mailtrap email sending
+│ │
+│ ├── .env # Environment configuration file
 │ ├── package.json # Backend dependencies and scripts
 │ ├── package-lock.json # Dependency lock file
-│ └── server.js # Backend entry point
+│ └── server.js # Entry point – initializes Express server
 │
 ├── subhub-frontend/ # React (Vite) frontend
-│ ├── node_modules/ # Frontend dependencies
-│ ├── public/ # Static assets
-│ ├── src/ # Source code
-│ │ ├── components/ # UI components (Navbar, SubscriptionRow, Charts)
-│ │ ├── pages/ # Dashboard, Analytics, Profile, etc.
-│ │ └── services/ # Axios setup and API configuration
-│ ├── .gitignore # Git ignore rules
+│ ├── public/ # Static assets (favicon, manifest, etc.)
+│ │
+│ ├── src/ # Main source folder
+│ │ ├── assets/ # App images and static media
+│ │ │ ├── Combined.png
+│ │ │ ├── Logo.png
+│ │ │ ├── placeholder.jpg
+│ │ │ └── react.svg
+│ │ │
+│ │ ├── components/ # Reusable UI components
+│ │ │ ├── Navbar.jsx / Navbar.css # Navigation bar
+│ │ │ ├── ProtectedRoute.jsx # Route protection component
+│ │ │ ├── SubscriptionItem.jsx / .css # Card for individual subscriptions
+│ │ │ ├── SubscriptionRow.jsx # Table row component for subscriptions
+│ │ │ ├── WelcomeModal.jsx / .css # Welcome popup modal
+│ │ │
+│ │ ├── context/ # Global React context
+│ │ │ └── AuthContext.jsx # Provides user authentication context
+│ │ │
+│ │ ├── pages/ # Major application pages
+│ │ │ ├── AboutPage.jsx / .css # About section
+│ │ │ ├── AddSubscriptionPage.jsx / .css # Add new subscription form
+│ │ │ ├── AllSubscriptionsPage.jsx / .css# Displays all subscriptions
+│ │ │ ├── AnalyticsPage.jsx / .css # Analytics dashboard
+│ │ │ ├── Dashboard.jsx / .css # Main user dashboard
+│ │ │ ├── EditSubscriptionPage.jsx # Edit existing subscription
+│ │ │ ├── LandingPage.jsx / .css # Landing/home page
+│ │ │ ├── LoginPage.jsx # User login form
+│ │ │ ├── ProfilePage.jsx / .css # User profile settings
+│ │ │ ├── RegisterPage.jsx # Registration form
+│ │ │ ├── TermsPage.jsx / .css # Terms and conditions page
+│ │ │ └── UpgradeSubscriptionPage.jsx # Free-to-paid upgrade screen
+│ │ │
+│ │ ├── services/ # API and backend integration
+│ │ │ └── api.js # Axios instance & API endpoint config
+│ │ │
+│ │ ├── App.jsx / App.css # Root app component
+│ │ ├── index.css # Global CSS styling
+│ │ └── main.jsx # Application entry point
+│ │
+│ ├── .gitignore # Ignore unnecessary frontend files
 │ ├── eslint.config.js # ESLint configuration
-│ ├── index.html # Root HTML file
+│ ├── index.html # Main HTML template
 │ ├── package.json # Frontend dependencies and scripts
 │ ├── package-lock.json # Dependency lock file
-│ ├── README.md # Frontend-specific readme (optional)
-│ └── vite.config.js # Vite configuration
+│ ├── vite.config.js # Vite configuration file
+│ └── README.md # (Optional) Frontend-specific documentation
 │
-├── .gitattributes # Git configuration for line endings, etc.
+├── .gitattributes # Git attributes configuration
 ├── .gitignore # Global ignore rules
-├── LICENSE # Project license (MIT)
+├── LICENSE # MIT license file
 └── README.md # Main project documentation
-
 ````
 
 ---
