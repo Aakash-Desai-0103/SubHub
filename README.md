@@ -154,10 +154,3 @@ This project is licensed under the **MIT License** — see [LICENSE](./LICENSE) 
 
 ⭐ **If you like this project, give it a star!**
 🧑‍💻 *Made with ❤️ by Team SubHub*
-
-```
-
----
-
-It will render perfectly on GitHub — with syntax-highlighted code blocks, tables, emojis, folder tree, and clean section dividers.
-```
