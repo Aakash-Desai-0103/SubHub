@@ -78,7 +78,7 @@ function SubscriptionItem({ subscription, onDelete }) {
               rel="noopener noreferrer"
               className="btn-action btn-pay"
             >
-              Pay
+              💳 Pay
             </a>
           )}
 
@@ -92,9 +92,22 @@ function SubscriptionItem({ subscription, onDelete }) {
               rel="noopener noreferrer"
               className="btn-action btn-manage"
             >
-              Manage
+              ⚙️ Manage
             </a>
           )}
+
+        {/* 🔗 Account Page button (always visible if provided) */}
+        {subscription.accountUrl && (
+          <a
+            href={subscription.accountUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-action btn-account"
+            title="Go to Account Page"
+          >
+            🔗 Account
+          </a>
+        )}
 
         {/* 🔼 Upgrade button (only for free subscriptions) */}
         {subscription.billingCycle === 'Free' && (
@@ -111,7 +124,7 @@ function SubscriptionItem({ subscription, onDelete }) {
           to={`/subscriptions/edit/${subscription._id}`}
           className="btn-action btn-edit"
         >
-          Edit
+          ✏️ Edit
         </Link>
 
         {/* 🗑️ Delete */}
@@ -119,7 +132,7 @@ function SubscriptionItem({ subscription, onDelete }) {
           onClick={() => onDelete(subscription._id)}
           className="btn-action btn-delete"
         >
-          Delete
+          🗑️ Delete
         </button>
 
         {/* ⏸ Show Inactive tag only when not active & not Free */}

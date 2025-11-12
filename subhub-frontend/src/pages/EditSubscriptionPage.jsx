@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import './AddSubscriptionPage.css'; // Reuse the same CSS
 
 function EditSubscriptionPage() {
-  const { id } = useParams(); // Get ID from /subscriptions/edit/:id
+  const { id } = useParams();
   const navigate = useNavigate();
 
   // Form State
@@ -17,6 +17,7 @@ function EditSubscriptionPage() {
   const [notes, setNotes] = useState('');
   const [paymentUrl, setPaymentUrl] = useState('');
   const [manageUrl, setManageUrl] = useState('');
+  const [accountUrl, setAccountUrl] = useState(''); // ✅ new state
   const [logoFile, setLogoFile] = useState(null);
 
   // Loading State
@@ -29,9 +30,9 @@ function EditSubscriptionPage() {
       setLoading(true);
       try {
         const response = await api.get(`/subscriptions/${id}`);
-        const subToEdit = response.data.data || response.data; // ✅ handles both API shapes
+        const subToEdit = response.data.data || response.data;
 
-        // ✅ Safely format data and prevent invalid date crashes
+        // ✅ Safely format and populate form
         setName(subToEdit.name || '');
         setCost(subToEdit.cost || '');
         setBillingCycle(subToEdit.billingCycle || 'Monthly');
@@ -44,10 +45,11 @@ function EditSubscriptionPage() {
         setNotes(subToEdit.notes || '');
         setPaymentUrl(subToEdit.paymentUrl || '');
         setManageUrl(subToEdit.manageUrl || '');
+        setAccountUrl(subToEdit.accountUrl || ''); // ✅ load from DB if exists
       } catch (error) {
         console.error('Failed to fetch subscription:', error);
         alert(error.response?.data?.message || 'Could not load subscription data.');
-        navigate('/subscriptions'); // Go back if it fails
+        navigate('/subscriptions');
       } finally {
         setLoading(false);
       }
@@ -62,18 +64,18 @@ function EditSubscriptionPage() {
     }
   };
 
-  // --- Handle Billing Cycle Change (handle "Free" subscriptions) ---
+  // --- Handle Billing Cycle Change ---
   const handleBillingCycleChange = (e) => {
     const value = e.target.value;
     setBillingCycle(value);
 
     if (value === 'Free') {
       setCost(0);
-      setNextDueDate(''); // no due date for free subscriptions
+      setNextDueDate('');
     }
   };
 
-  // --- Handle form submit ---
+  // --- Handle Form Submit ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -82,16 +84,17 @@ function EditSubscriptionPage() {
       name,
       cost: parseFloat(cost),
       billingCycle,
-      nextDueDate: billingCycle === 'Free' ? null : nextDueDate ? new Date(nextDueDate) : null, // ✅ skip date if free
+      nextDueDate: billingCycle === 'Free' ? null : nextDueDate ? new Date(nextDueDate) : null,
       category,
       notes,
       paymentUrl,
       manageUrl,
+      accountUrl, // ✅ include new field
     };
 
     try {
       await api.put(`/subscriptions/${id}`, updatedSubscription);
-      navigate('/subscriptions'); // Redirect back to the list on success
+      navigate('/subscriptions');
     } catch (error) {
       console.error('Failed to update subscription:', error);
       alert(error.response?.data?.message || 'Failed to save changes. Please try again.');
@@ -100,7 +103,7 @@ function EditSubscriptionPage() {
     }
   };
 
-  // --- Show loading state ---
+  // --- Show Loading State ---
   if (loading) {
     return (
       <>
@@ -155,7 +158,7 @@ function EditSubscriptionPage() {
                 <option value="Monthly">Monthly</option>
                 <option value="Quarterly">Quarterly</option>
                 <option value="Yearly">Yearly</option>
-                <option value="Free">Free</option> {/* ✅ New Option */}
+                <option value="Free">Free</option>
               </select>
             </div>
           </div>
@@ -189,6 +192,7 @@ function EditSubscriptionPage() {
             </div>
           </div>
 
+          {/* --- URL Fields --- */}
           <div className="form-group">
             <label htmlFor="paymentUrl">Payment URL (Optional)</label>
             <input
@@ -207,6 +211,19 @@ function EditSubscriptionPage() {
               id="manageUrl"
               value={manageUrl}
               onChange={(e) => setManageUrl(e.target.value)}
+              disabled={saving}
+            />
+          </div>
+
+          {/* ✅ New Account Page URL field */}
+          <div className="form-group">
+            <label htmlFor="accountUrl">Account Page URL (Optional)</label>
+            <input
+              type="url"
+              id="accountUrl"
+              value={accountUrl}
+              onChange={(e) => setAccountUrl(e.target.value)}
+              placeholder="https://github.com/username"
               disabled={saving}
             />
           </div>

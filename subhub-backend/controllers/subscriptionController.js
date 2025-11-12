@@ -40,10 +40,8 @@ exports.getAllSubscriptions = async (req, res) => {
           }
         }
 
-        // 3️⃣ If status changed → save update in DB
-        if (shouldSave) {
-          await sub.save();
-        }
+        // 3️⃣ Save only if something changed
+        if (shouldSave) await sub.save();
 
         return sub;
       })
@@ -66,13 +64,14 @@ exports.createSubscription = async (req, res) => {
   try {
     const { status, ...rest } = req.body;
 
+    // ✅ Include accountUrl and other optional fields automatically via spread
     const subscription = new Subscription({
       user: req.user._id,
       ...rest,
       status:
         status && ['Active', 'Inactive', 'Cancelled'].includes(status)
           ? status
-          : 'Active', // ✅ Default to Active if invalid/missing
+          : 'Active',
     });
 
     const created = await subscription.save();
@@ -117,6 +116,7 @@ exports.updateSubscription = async (req, res) => {
     if (subscription.user.toString() !== req.user._id.toString())
       return res.status(401).json({ success: false, message: 'Not authorized' });
 
+    // ✅ Allow updating accountUrl and other fields
     const updated = await Subscription.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -167,7 +167,6 @@ exports.cancelSubscription = async (req, res) => {
     if (subscription.user.toString() !== req.user._id.toString())
       return res.status(401).json({ success: false, message: 'Not authorized' });
 
-    // ✅ Set to “Inactive” (default), allow override
     subscription.status = req.body.status || 'Inactive';
     await subscription.save();
 
@@ -195,14 +194,12 @@ exports.upgradeSubscription = async (req, res) => {
     if (subscription.user.toString() !== req.user._id.toString())
       return res.status(401).json({ success: false, message: 'Not authorized' });
 
-    // Only allow upgrading from Free plan
     if (subscription.billingCycle !== 'Free') {
       return res
         .status(400)
         .json({ success: false, message: 'Only free subscriptions can be upgraded' });
     }
 
-    // ✅ Apply upgrade details
     subscription.billingCycle = billingCycle || 'Monthly';
     subscription.cost = parseFloat(cost) || 0;
     subscription.nextDueDate = nextDueDate ? new Date(nextDueDate) : null;

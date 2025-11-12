@@ -8,6 +8,8 @@ const subscriptionSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+
+  // Basic Details
   name: {
     type: String,
     required: [true, 'Subscription must have a name'],
@@ -37,6 +39,8 @@ const subscriptionSchema = new mongoose.Schema({
     default: 'Active',
     enum: ['Active', 'Inactive', 'Cancelled'],
   },
+
+  // Optional Info
   description: {
     type: String,
   },
@@ -47,6 +51,10 @@ const subscriptionSchema = new mongoose.Schema({
     type: String,
   },
   manageUrl: {
+    type: String,
+  },
+  // ✅ New field for direct account access (e.g., GitHub, Netflix account page)
+  accountUrl: {
     type: String,
   },
   notes: {

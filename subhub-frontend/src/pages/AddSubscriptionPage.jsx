@@ -13,6 +13,7 @@ function AddSubscriptionPage() {
   const [notes, setNotes] = useState('');
   const [paymentUrl, setPaymentUrl] = useState('');
   const [manageUrl, setManageUrl] = useState('');
+  const [accountUrl, setAccountUrl] = useState(''); // ✅ new state
   const [logoUrl, setLogoUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -29,6 +30,7 @@ function AddSubscriptionPage() {
     }
   };
 
+  // ✅ Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -42,6 +44,7 @@ function AddSubscriptionPage() {
       notes,
       paymentUrl,
       manageUrl,
+      accountUrl, // ✅ include new field
       logoUrl,
       status: 'Active',
     };
@@ -67,6 +70,7 @@ function AddSubscriptionPage() {
         <h1>Add New Subscription</h1>
 
         <form onSubmit={handleSubmit} className="add-sub-form">
+          {/* --- Basic Info --- */}
           <div className="form-group">
             <label htmlFor="name">Subscription Name</label>
             <input
@@ -105,7 +109,7 @@ function AddSubscriptionPage() {
                 <option value="Monthly">Monthly</option>
                 <option value="Quarterly">Quarterly</option>
                 <option value="Yearly">Yearly</option>
-                <option value="Free">Free</option> {/* ✅ Added new option */}
+                <option value="Free">Free</option>
               </select>
             </div>
           </div>
@@ -133,12 +137,13 @@ function AddSubscriptionPage() {
                 <option value="Work">Work</option>
                 <option value="Utilities">Utilities</option>
                 <option value="Fitness">Fitness</option>
-                <option value="Education">Education</option> {/* ✅ Added useful category */}
+                <option value="Education">Education</option>
                 <option value="Other">Other</option>
               </select>
             </div>
           </div>
 
+          {/* --- Optional URLs --- */}
           <div className="form-group">
             <label htmlFor="paymentUrl">Payment URL (Optional)</label>
             <input
@@ -159,6 +164,19 @@ function AddSubscriptionPage() {
               value={manageUrl}
               onChange={(e) => setManageUrl(e.target.value)}
               placeholder="https://netflix.com/YourAccount"
+              disabled={loading}
+            />
+          </div>
+
+          {/* ✅ New Account Page URL field */}
+          <div className="form-group">
+            <label htmlFor="accountUrl">Account Page URL (Optional)</label>
+            <input
+              type="url"
+              id="accountUrl"
+              value={accountUrl}
+              onChange={(e) => setAccountUrl(e.target.value)}
+              placeholder="https://github.com/username"
               disabled={loading}
             />
           </div>

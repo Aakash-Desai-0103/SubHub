@@ -67,10 +67,7 @@ function SubscriptionRow({ subscription, onDelete }) {
         />
         <div className="service-info">
           <span className="service-name">{subscription.name}</span>
-          {/* ⭐ Optional small badge for upgraded services */}
-          {subscription.wasUpgraded && (
-            <span className="upgrade-badge">⭐ Upgraded</span>
-          )}
+          {subscription.wasUpgraded && <span className="upgrade-badge">⭐ Upgraded</span>}
         </div>
       </td>
 
@@ -120,6 +117,19 @@ function SubscriptionRow({ subscription, onDelete }) {
             title="Manage Subscription"
           >
             ⚙️
+          </a>
+        )}
+
+        {/* 🔗 Account Page link (NEW) */}
+        {subscription.accountUrl && (
+          <a
+            href={subscription.accountUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="action-btn"
+            title="Go to Account Page"
+          >
+            🔗
           </a>
         )}
 
